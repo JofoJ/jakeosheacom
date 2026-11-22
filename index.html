@@ -5,282 +5,259 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Jake O'Shea</title>
     <link rel="icon" href="favicon.ico" />
-    <meta name="description" content="Figuring it out in 🌵🤠 Austin, TX." />
+    <meta name="description" content="Curious person, avid builder, fantasy basketball fanatic, and entrepreneurship enthusiast." />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Jake O'Shea" />
-    <meta property="og:description" content="Curious person, aspiring builder, and entrepreneurship enthusiast. Living it up in Austin, TX." />
+    <meta property="og:description" content="Curious person, avid builder, fantasy basketball fanatic, and entrepreneurship enthusiast." />
     <meta property="og:type" content="website" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              display: ["Fraunces", "ui-serif", "Georgia", "serif"],
-              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-            },
-            colors: {
-              cream: "#FBF7F1",
-              ink: "#2B2420",
-              clay: "#C2410C",
-              ember: "#E07A3F",
-            },
-          },
-        },
-      };
-    </script>
-
     <style>
-      html {
-        scroll-behavior: smooth;
+      :root {
+        --bg: #0b0e14;
+        --panel: #111722;
+        --ink: #e6edf3;
+        --muted: #7d8da1;
+        --line: #20283a;
+        --accent: #5eead4;
+        --accent2: #a78bfa;
       }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
-        background-color: #fbf7f1;
-        color: #2b2420;
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        background-image:
+          radial-gradient(circle at 15% -10%, rgba(94, 234, 212, 0.08), transparent 40%),
+          radial-gradient(circle at 110% 10%, rgba(167, 139, 250, 0.10), transparent 42%);
+        background-attachment: fixed;
+      }
+      .mono { font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace; }
+
+      main { max-width: 760px; margin: 0 auto; padding: 64px 24px 96px; }
+
+      /* Hero */
+      .avatar {
+        display: block;
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        object-fit: cover;
+        margin-bottom: 20px;
+        border: 1px solid var(--line);
+        box-shadow: 0 12px 30px -14px rgba(94, 234, 212, 0.45);
+      }
+      .addr {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .dot {
+        width: 8px; height: 8px; border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 0 0 rgba(94, 234, 212, 0.55);
+        animation: pulse 2.4s ease-out infinite;
+      }
+      @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(94, 234, 212, 0.5); }
+        70% { box-shadow: 0 0 0 7px rgba(94, 234, 212, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(94, 234, 212, 0); }
+      }
+      h1 {
+        font-weight: 700;
+        font-size: clamp(38px, 10vw, 50px);
+        letter-spacing: -0.02em;
+        line-height: 1.02;
+        margin: 14px 0 0;
+      }
+      h1 .cursor { color: var(--accent); font-weight: 400; animation: blink 1.1s steps(1) infinite; }
+      @keyframes blink { 50% { opacity: 0; } }
+
+      .tag {
+        display: inline-block;
+        margin-top: 16px;
+        font-size: 12px;
+        color: var(--accent);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px 12px;
+      }
+      .lede {
+        font-size: clamp(17px, 4.5vw, 19px);
+        line-height: 1.55;
+        color: #c7d2de;
+        margin: 20px 0 0;
+        max-width: 42ch;
       }
 
-      /* Soft, slowly drifting warm light behind everything */
-      .blob {
-        position: fixed;
-        border-radius: 9999px;
-        filter: blur(80px);
-        opacity: 0.55;
-        z-index: -1;
-        pointer-events: none;
-        animation: drift 18s ease-in-out infinite alternate;
+      .pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+      .pill {
+        font-size: 13px;
+        color: var(--ink);
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 9px 14px;
+        text-decoration: none;
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        transition: border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
       }
-      @keyframes drift {
-        from {
-          transform: translate(0, 0) scale(1);
-        }
-        to {
-          transform: translate(30px, -24px) scale(1.12);
-        }
-      }
+      .pill:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-      /* Staggered fade-up on load */
-      .reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      /* Sections */
+      h2 {
+        font-size: 13px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 52px 0 16px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
       }
-      @keyframes fadeUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+      h2::before { content: "//"; color: var(--accent2); }
 
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
       .card {
-        transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-          box-shadow 0.25s ease, border-color 0.25s ease;
+        display: flex;
+        flex-direction: column;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 18px;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
       }
       .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 18px 40px -18px rgba(194, 65, 12, 0.35);
-        border-color: rgba(224, 122, 63, 0.55);
+        border-color: var(--accent);
+        transform: translateY(-3px);
+        box-shadow: 0 16px 34px -20px rgba(94, 234, 212, 0.55);
       }
-      .card:hover .card-title {
-        color: #c2410c;
-      }
-      .card-arrow {
-        transition: transform 0.25s ease, opacity 0.25s ease;
-      }
-      .card:hover .card-arrow {
-        transform: translate(3px, -3px);
-        opacity: 1;
-      }
+      .card .top { display: flex; justify-content: space-between; align-items: center; }
+      .card .ico { font-size: 20px; }
+      .card .arr { color: var(--muted); transition: transform 0.2s ease, color 0.2s ease; }
+      .card:hover .arr { transform: translate(2px, -2px); color: var(--accent); }
+      .card h3 { margin: 12px 0 6px; font-size: 17px; }
+      .card p { margin: 0; font-size: 13px; line-height: 1.55; color: var(--muted); }
+      .span-2 { grid-column: 1 / -1; }
 
-      .pill {
-        transition: transform 0.2s ease, box-shadow 0.2s ease,
-          background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      /* Links */
+      .list a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: var(--ink);
+        font-size: 15px;
+        transition: border-color 0.18s ease, color 0.18s ease;
       }
-      .pill:hover {
-        transform: translateY(-2px);
-        background-color: #2b2420;
-        color: #fbf7f1;
-        border-color: #2b2420;
-        box-shadow: 0 10px 24px -12px rgba(43, 36, 32, 0.55);
-      }
+      .list a:hover { border-color: var(--accent2); color: var(--accent2); }
+      .list .label { display: inline-flex; gap: 10px; align-items: center; }
 
+      footer { margin-top: 56px; font-size: 12px; color: var(--muted); }
+
+      @media (max-width: 560px) {
+        .grid { grid-template-columns: 1fr; }
+        .span-2 { grid-column: auto; }
+      }
       @media (prefers-reduced-motion: reduce) {
-        .blob,
-        .reveal {
-          animation: none;
-        }
-        .reveal {
-          opacity: 1;
-          transform: none;
-        }
-        html {
-          scroll-behavior: auto;
-        }
+        .dot, h1 .cursor { animation: none; }
+        html { scroll-behavior: auto; }
       }
     </style>
   </head>
 
-  <body class="font-sans antialiased min-h-screen selection:bg-ember/30">
-    <!-- ambient warmth -->
-    <div class="blob" style="top: -120px; left: -80px; width: 420px; height: 420px; background: #f6c98f;"></div>
-    <div class="blob" style="top: 30%; right: -120px; width: 460px; height: 460px; background: #f4a07c; animation-delay: -6s;"></div>
-    <div class="blob" style="bottom: -160px; left: 20%; width: 480px; height: 480px; background: #f3c1c8; animation-delay: -11s;"></div>
-
-    <main class="mx-auto w-full max-w-3xl px-6 py-16 sm:py-24">
+  <body>
+    <main>
       <!-- Hero -->
-      <header class="reveal" style="animation-delay: 0.05s;">
-        <div class="flex items-center gap-4">
-          <img
-            src="headshot.jpeg"
-            alt="Jake O'Shea"
-            width="64"
-            height="64"
-            class="h-16 w-16 shrink-0 rounded-2xl object-cover shadow-lg shadow-clay/30 ring-1 ring-ink/10"
-          />
-          <div>
-            <h1 class="font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
-              Jake O'Shea
-            </h1>
-            <p class="mt-1 text-base text-ink/60">🌵🤠 Austin, TX</p>
-          </div>
-        </div>
-
-        <p class="mt-6 max-w-xl font-display text-xl leading-relaxed text-ink/85 sm:text-2xl">
+      <header>
+        <img
+          src="headshot.jpeg"
+          alt="Jake O'Shea"
+          width="60"
+          height="60"
+          class="avatar"
+        />
+        <p class="addr mono"><span class="dot" aria-hidden="true"></span>localhost:512</p>
+        <h1>Jake O'Shea<span class="cursor" aria-hidden="true">_</span></h1>
+        <span class="tag mono">📍 Austin, TX</span>
+        <p class="lede">
           Curious person, avid builder, fantasy basketball fanatic, and entrepreneurship enthusiast.
         </p>
 
-        <!-- Social pills -->
-        <nav class="mt-7 flex flex-wrap gap-3" aria-label="Social links">
-          <a
-            href="https://twitter.com/jake_oshea"
-            target="_blank"
-            rel="noopener"
-            class="pill inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white/60 px-4 py-2 text-sm font-medium text-ink"
-          >
-            <span aria-hidden="true">𝕏</span> Twitter
-          </a>
-          <a
-            href="mailto:4jakeoshea@gmail.com"
-            class="pill inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white/60 px-4 py-2 text-sm font-medium text-ink"
-          >
-            <span aria-hidden="true">✉️</span> Email
-          </a>
-          <a
-            href="https://linkedin.com/in/jake-oshea"
-            target="_blank"
-            rel="noopener"
-            class="pill inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white/60 px-4 py-2 text-sm font-medium text-ink"
-          >
-            <span aria-hidden="true">in</span> LinkedIn
-          </a>
+        <nav class="pills" aria-label="Social links">
+          <a class="pill mono" href="https://twitter.com/jake_oshea" target="_blank" rel="noopener">𝕏 twitter</a>
+          <a class="pill mono" href="mailto:4jakeoshea@gmail.com">✉ email</a>
+          <a class="pill mono" href="https://linkedin.com/in/jake-oshea" target="_blank" rel="noopener">in linkedin</a>
         </nav>
       </header>
 
       <!-- Projects -->
-      <section class="mt-16 reveal" style="animation-delay: 0.15s;" aria-labelledby="projects-heading">
-        <div class="flex items-baseline justify-between">
-          <h2 id="projects-heading" class="font-display text-2xl font-semibold tracking-tight text-ink">
-            Projects
-          </h2>
-          <span class="text-sm text-ink/40">Things I'm building</span>
-        </div>
-
-        <div class="mt-6 grid gap-4 sm:grid-cols-2">
-          <!-- AITX -->
-          <a href="https://aitxcommunity.com" target="_blank" rel="noopener"
-            class="card group flex flex-col rounded-2xl border border-ink/10 bg-white/70 p-5 backdrop-blur-sm">
-            <div class="flex items-start justify-between">
-              <span class="text-2xl" aria-hidden="true">🤝</span>
-              <span class="card-arrow text-ink/30 opacity-60" aria-hidden="true">↗</span>
-            </div>
-            <h3 class="card-title mt-3 font-display text-lg font-semibold text-ink">AITX</h3>
-            <p class="mt-1.5 text-sm leading-relaxed text-ink/65">
-              Building a community of AI engineers and entrepreneurs across Texas. In one year we've
-              grown past 1,500 members, featured 50+ local AI startups, and partnered with Google,
-              Meta, Groq, SambaNova, Cloudflare, and more.
-            </p>
+      <section aria-labelledby="projects-heading">
+        <h2 id="projects-heading" class="mono">projects</h2>
+        <div class="grid">
+          <a class="card" href="https://aitxcommunity.com" target="_blank" rel="noopener">
+            <div class="top"><span class="ico" aria-hidden="true">🤝</span><span class="arr" aria-hidden="true">↗</span></div>
+            <h3>AITX</h3>
+            <p>Building a community of AI engineers and entrepreneurs across Texas. In one year we've grown past 1,500 members, featured 50+ local AI startups, and partnered with Google, Meta, Groq, SambaNova, Cloudflare, and more.</p>
           </a>
 
-          <!-- ShowerThoughts -->
-          <a href="https://showerthoughts-0f4p.onrender.com/" target="_blank" rel="noopener"
-            class="card group flex flex-col rounded-2xl border border-ink/10 bg-white/70 p-5 backdrop-blur-sm">
-            <div class="flex items-start justify-between">
-              <span class="text-2xl" aria-hidden="true">🚿</span>
-              <span class="card-arrow text-ink/30 opacity-60" aria-hidden="true">↗</span>
-            </div>
-            <h3 class="card-title mt-3 font-display text-lg font-semibold text-ink">ShowerThoughts</h3>
-            <p class="mt-1.5 text-sm leading-relaxed text-ink/65">
-              My buildspace n&amp;w s4 submission. Turns random end-of-day musings into an actionable
-              summary and tasks — daily thoughts into a weekly plan.
-            </p>
+          <a class="card" href="https://showerthoughts-0f4p.onrender.com/" target="_blank" rel="noopener">
+            <div class="top"><span class="ico" aria-hidden="true">🚿</span><span class="arr" aria-hidden="true">↗</span></div>
+            <h3>ShowerThoughts</h3>
+            <p>My buildspace n&amp;w s4 submission. Turns random end-of-day musings into an actionable summary and tasks — daily thoughts into a weekly plan.</p>
           </a>
 
-          <!-- Community Hackathons -->
-          <a href="https://www.aitxcommunity.com/hackathons" target="_blank" rel="noopener"
-            class="card group flex flex-col rounded-2xl border border-ink/10 bg-white/70 p-5 backdrop-blur-sm">
-            <div class="flex items-start justify-between">
-              <span class="text-2xl" aria-hidden="true">⚡</span>
-              <span class="card-arrow text-ink/30 opacity-60" aria-hidden="true">↗</span>
-            </div>
-            <h3 class="card-title mt-3 font-display text-lg font-semibold text-ink">Community Hackathons</h3>
-            <p class="mt-1.5 text-sm leading-relaxed text-ink/65">
-              I organized and hosted an AI hackathon — this site is an artifact of it. Worked closely
-              with AI Tinkerers, Google, and Lambda Labs.
-            </p>
+          <a class="card span-2" href="https://www.aitxcommunity.com/hackathons" target="_blank" rel="noopener">
+            <div class="top"><span class="ico" aria-hidden="true">⚡</span><span class="arr" aria-hidden="true">↗</span></div>
+            <h3>Community Hackathons</h3>
+            <p>I organized and hosted an AI hackathon — this site is an artifact of it. Worked closely with AI Tinkerers, Google, and Lambda Labs.</p>
           </a>
         </div>
       </section>
 
-      <!-- Links / Media -->
-      <section class="mt-16 reveal" style="animation-delay: 0.25s;" aria-labelledby="links-heading">
-        <div class="flex items-baseline justify-between">
-          <h2 id="links-heading" class="font-display text-2xl font-semibold tracking-tight text-ink">
-            Professional Speaking
-          </h2>
-          <span class="text-sm text-ink/40">Podcasts &amp; talks</span>
-        </div>
-
-        <div class="mt-6 flex flex-col gap-3">
-          <a href="https://open.spotify.com/show/1dCC1IdtGKUd0W3SBiGwN6" target="_blank" rel="noopener"
-            class="card group flex items-center gap-4 rounded-2xl border border-ink/10 bg-white/70 p-4 backdrop-blur-sm">
-            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-green-50 text-lg" aria-hidden="true">🎧</span>
-            <span class="card-title flex-1 font-medium text-ink">AITX Community Podcast</span>
-            <span class="card-arrow text-ink/30 opacity-60" aria-hidden="true">↗</span>
+      <!-- Professional Speaking -->
+      <section aria-labelledby="speaking-heading">
+        <h2 id="speaking-heading" class="mono">professional speaking</h2>
+        <div class="list">
+          <a href="https://open.spotify.com/show/1dCC1IdtGKUd0W3SBiGwN6" target="_blank" rel="noopener">
+            <span class="label"><span aria-hidden="true">🎧</span> AITX Community Podcast</span><span aria-hidden="true">↗</span>
           </a>
-          <a href="https://www.youtube.com/watch?v=awXb5iT_zMY" target="_blank" rel="noopener"
-            class="card group flex items-center gap-4 rounded-2xl border border-ink/10 bg-white/70 p-4 backdrop-blur-sm">
-            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-red-50 text-lg" aria-hidden="true">▶️</span>
-            <span class="card-title flex-1 font-medium text-ink">INNW Podcast</span>
-            <span class="card-arrow text-ink/30 opacity-60" aria-hidden="true">↗</span>
+          <a href="https://www.youtube.com/watch?v=awXb5iT_zMY" target="_blank" rel="noopener">
+            <span class="label"><span aria-hidden="true">▶</span> INNW Podcast</span><span aria-hidden="true">↗</span>
           </a>
-          <a href="https://open.spotify.com/episode/7tQcMabSP5Ra1A1O9bxx4z" target="_blank" rel="noopener"
-            class="card group flex items-center gap-4 rounded-2xl border border-ink/10 bg-white/70 p-4 backdrop-blur-sm">
-            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-green-50 text-lg" aria-hidden="true">🎧</span>
-            <span class="card-title flex-1 font-medium text-ink">Funds &amp; Founders Podcast</span>
-            <span class="card-arrow text-ink/30 opacity-60" aria-hidden="true">↗</span>
+          <a href="https://open.spotify.com/episode/7tQcMabSP5Ra1A1O9bxx4z" target="_blank" rel="noopener">
+            <span class="label"><span aria-hidden="true">🎧</span> Funds &amp; Founders Podcast</span><span aria-hidden="true">↗</span>
           </a>
-          <a href="https://www.youtube.com/watch?v=0ko_Rb8sCJM" target="_blank" rel="noopener"
-            class="card group flex items-center gap-4 rounded-2xl border border-ink/10 bg-white/70 p-4 backdrop-blur-sm">
-            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-red-50 text-lg" aria-hidden="true">▶️</span>
-            <span class="card-title flex-1 font-medium text-ink">Startup Strides Podcast</span>
-            <span class="card-arrow text-ink/30 opacity-60" aria-hidden="true">↗</span>
+          <a href="https://www.youtube.com/watch?v=0ko_Rb8sCJM" target="_blank" rel="noopener">
+            <span class="label"><span aria-hidden="true">▶</span> Startup Strides Podcast</span><span aria-hidden="true">↗</span>
           </a>
         </div>
       </section>
 
-      <!-- Footer -->
-      <footer class="mt-20 border-t border-ink/10 pt-6 text-sm text-ink/50 reveal" style="animation-delay: 0.35s;">
-        <p>Made with ☕ in Austin, TX · © 2026 Jake O'Shea</p>
-      </footer>
+      <footer class="mono">// made with ☕ in Austin, TX · © 2026 Jake O'Shea</footer>
     </main>
   </body>
 </html>
